@@ -11,16 +11,16 @@ import random as rn
 #Sorular bu sitelerden alınmıştır:
 #https://www.iyigunler.net/nedir/bilgi-yarismasi-soru-ve-cevaplari-kolay-sorular-kolay-cevaplar-h341280.html
 
-def sor(sorudic):
+def sor(sorusayısı,sorudic):
     soru, cevap = sorudic["q"],sorudic["a"]
-    print(soru)
+    print(str(sorusayısı)+". Soru:",soru)
     for i in range(1,4):
         ans = input("["+str(4-i)+" hakkınız kaldı] Cevabınızı yazın:")
         if ans==cevap:
-            print("Bildiniz! «+10 Puan»")
+            print("Bildiniz! «+10 Puan»\n")
             return True
         else:
-            print("Cevabınız doğru değil.")
+            print("Cevabınız doğru değil.\n")
         
 
 questions = [{"q":"Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu tepesi nerededir?","a":"Yeni Zelanda"},
@@ -47,10 +47,10 @@ puan = 0
 
 
 sorulmayan = questions.copy()
-while (len(sorulmayan)>1): #Tüm sorular sorulana kadar tekrarlıyoruz
+while (len(sorulmayan)>0): #Tüm sorular sorulana kadar tekrarlıyoruz
     
     i = rn.randint(0,len(sorulmayan)-1) #Soru seçme işlemi
-    ans = sor(sorulmayan[i]) #Soruyu sorma
+    ans = sor(11-len(sorulmayan),sorulmayan[i]) #Soruyu sorma
 
     #Sorunun cevabına göre işlem yapmak
     if ans:
@@ -62,7 +62,7 @@ while (len(sorulmayan)>1): #Tüm sorular sorulana kadar tekrarlıyoruz
 #Puanına göre kullanıcıyı değerlendirmek.
 
 if puan>5:
-    print("Tebrikler",uname+"! Oyunu başarıyla bitirdiniz. Puanınız:",puan)
+    print("\nTebrikler",uname+"! Oyunu başarıyla bitirdiniz. Puanınız:",puan)
 else:
     print("Oyunu başarıyla tamamlayamadınız, ama tekrar deneyebilirsiniz!")
     print("Bu arada puanınız:",puan)
